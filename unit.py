@@ -7,8 +7,6 @@ class Unit(ABC):
     def health(self):
         pass
 
-    @property
     @abstractmethod
-    def recharge(self):
+    def get_damage(self, damage):
         pass
-
