@@ -3,7 +3,8 @@ from soldier import Soldier
 
 
 class Squad:
-    def __init__(self):
+    def __init__(self, strategy):
+        self.strategy = strategy
         self.units = []
         self.create_units()
 
