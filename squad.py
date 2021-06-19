@@ -5,14 +5,11 @@ from soldier import Soldier
 class Squad:
     def __init__(self):
         self.units = []
+        self.create_units()
 
-    def add_unit(self, unit):
-        self.units.append(unit)
-
-    def fill_squad_with_units(self):
+    def create_units(self):
         for i in range(settings.COUNT_OF_UNITS_PER_SQUAD):
-            unit = Soldier()
-            self.add_unit(unit)
+            self.units.append(Soldier())  # todo must be not soldier
 
     @property
     def attack_success_probability(self):

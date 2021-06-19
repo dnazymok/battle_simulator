@@ -1,7 +1,5 @@
 import settings
 from army import Army
+from game import Game
 
-army_1 = Army()
-army_2 = Army()
-
-battle_simulator = BattleSimulator(army_1, army_2)
+game = Game()
