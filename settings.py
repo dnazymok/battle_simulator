@@ -1,6 +1,11 @@
 """Settings module for storing constants"""
-COUNT_OF_ARMIES = 3
-COUNT_OF_SQUADS_PER_ARMY = 10
-COUNT_OF_UNITS_PER_SQUAD = 8
+import json
 
-RANDOM_SEED = 12455222
+with open("config.json") as config:
+    settings = json.load(config)
+
+COUNT_OF_ARMIES = settings["count_of_armies"]
+COUNT_OF_SQUADS_PER_ARMY = settings["count_of_squads_per_army"]
+COUNT_OF_UNITS_PER_SQUAD = settings["count_of_units_per_squad"]
+
+RANDOM_SEED = settings["random_seed"]

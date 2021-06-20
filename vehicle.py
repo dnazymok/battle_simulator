@@ -14,6 +14,7 @@ class Vehicle(Unit):
         attack_success_probability: Chance to attack enemy
 
     """
+
     def __init__(self, random=None):
         self.random = random
         self.__health = 100
@@ -27,6 +28,8 @@ class Vehicle(Unit):
         Returns:
             health: int
         """
+        if not self.operators:
+            return 0
         return sum(operator.health for operator in self.operators) / len(
             self.operators) + self.__health
 
@@ -56,6 +59,8 @@ class Vehicle(Unit):
         Returns:
             int
         """
+        if not self.operators:
+            return 0
         return 0.5 * (1 + self.health / 100) * sum(
             operator.attack_success_probability for operator in
             self.operators) / len(self.operators)
