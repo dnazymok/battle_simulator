@@ -1,5 +1,8 @@
+import random
+
 import settings
 from soldier import Soldier
+from vehicle import Vehicle
 
 
 class Squad:
@@ -10,12 +13,11 @@ class Squad:
 
     def create_units(self):
         for i in range(settings.COUNT_OF_UNITS_PER_SQUAD):
-            self.units.append(Soldier())  # todo must be not soldier
+            self.units.append(random.choice([Soldier(), Vehicle()]))
 
     def get_exp(self):
         for unit in self.units:
-            if isinstance(unit, Soldier):  # todo NOT ONLY SOLDIER
-                unit.get_exp()
+            unit.get_exp()
 
     def get_damage(self, damage):
         for unit in self.units:
