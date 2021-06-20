@@ -1,18 +1,17 @@
-from random import randint
-
 from soldier import Soldier
 from unit import Unit
 
 
 class Vehicle(Unit):
-    def __init__(self):
+    def __init__(self, random=None):
+        self.random = random
         self.__health = 100
         self.operators = []
         self.create_operators()
 
     def create_operators(self):
-        for i in range(randint(1, 3)):
-            self.operators.append(Soldier())
+        for i in range(self.random.randint(1, 3)):
+            self.operators.append(Soldier(self.random))
 
     @property
     def attack_success_probability(self):

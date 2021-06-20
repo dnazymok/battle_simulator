@@ -1,19 +1,19 @@
-import random
-
 import settings
 from soldier import Soldier
 from vehicle import Vehicle
 
 
 class Squad:
-    def __init__(self, strategy):
+    def __init__(self, strategy, random=None):
+        self.random = random
         self.strategy = strategy
         self.units = []
         self.create_units()
 
     def create_units(self):
         for i in range(settings.COUNT_OF_UNITS_PER_SQUAD):
-            self.units.append(random.choice([Soldier(), Vehicle()]))
+            self.units.append(self.random.choice(
+                [Soldier(self.random), Vehicle(self.random)]))
 
     def get_exp(self):
         for unit in self.units:

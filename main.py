@@ -1,4 +1,8 @@
 from game import Game
+import settings
 
-game = Game()
-game.run()
+random_seed = settings.RANDOM_SEED
+
+if __name__ == "__main__":
+    game = Game(random_seed)
+    game.run()

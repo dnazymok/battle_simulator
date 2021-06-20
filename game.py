@@ -1,4 +1,5 @@
-import random
+from random import Random
+
 import strategies
 import settings
 from army import Army
@@ -9,14 +10,15 @@ class Game:
                   strategies.StrategySelectWeakest,
                   strategies.StrategySelectRandom]
 
-    def __init__(self):
+    def __init__(self, random_seed=None):
+        self.random = Random(random_seed)
         self.armies = []
         self.create_armies()
 
     def create_armies(self):
         for i in range(settings.COUNT_OF_ARMIES):
-            strategy = random.choice(Game.strategies)
-            self.armies.append(Army(strategy))
+            strategy = self.random.choice(Game.strategies)
+            self.armies.append(Army(strategy, self.random))
 
     def filter_alive_armies(self):
         self.armies = [army for army in self.armies if army.squads]

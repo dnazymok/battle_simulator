@@ -1,9 +1,9 @@
 from unit import Unit
-from random import randint
 
 
 class Soldier(Unit):
-    def __init__(self):
+    def __init__(self, random=None):
+        self.random = random
         self.__health = 100
         self.__experience = 0
 
@@ -26,8 +26,9 @@ class Soldier(Unit):
 
     @property
     def attack_success_probability(self):
-        return 0.5 * (1 + self.health / 100) * randint(50 + self.experience,
-                                                       100) / 100
+        return 0.5 * (1 + self.health / 100) * self.random.randint(
+            50 + self.experience,
+            100) / 100
 
     @property
     def damage(self):

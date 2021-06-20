@@ -1,5 +1,6 @@
-import random
+from random import Random
 
+import settings
 from abc import ABC, abstractmethod
 
 
@@ -25,4 +26,4 @@ class StrategySelectWeakest(BaseStrategy):
 class StrategySelectRandom(BaseStrategy):
     @staticmethod
     def select_enemy(enemies):
-        return random.choice(enemies)
+        return Random(settings.RANDOM_SEED).choice(enemies)

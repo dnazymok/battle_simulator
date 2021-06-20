@@ -3,14 +3,15 @@ from squad import Squad
 
 
 class Army:
-    def __init__(self, strategy):
+    def __init__(self, strategy, random=None):
+        self.random = random
         self.strategy = strategy
         self.squads = []
         self.create_squads()
 
     def create_squads(self):
         for i in range(settings.COUNT_OF_SQUADS_PER_ARMY):
-            self.squads.append(Squad(self.strategy))
+            self.squads.append(Squad(self.strategy, self.random))
 
     def attack(self, enemy_army):
         enemy_army.get_damage(self.damage)
