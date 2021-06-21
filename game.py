@@ -2,6 +2,8 @@
 
     game = Game()
     game.run()
+
+    Result of the game will be in the logs
 """
 from random import Random
 
