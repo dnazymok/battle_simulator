@@ -85,7 +85,7 @@ class Vehicle(Unit):
         """
         vehicle_damage = damage * 0.6
         operator_damage = damage * 0.1
-        self.health -= vehicle_damage
+        self.__health -= vehicle_damage
         for operator in self.operators:
             operator.get_damage(operator_damage)
             if operator.health < 0:

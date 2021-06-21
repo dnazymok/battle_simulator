@@ -7,6 +7,8 @@ from random import Random
 
 import strategies
 import settings
+
+from logger import TxtLogger
 from army import Army
 
 
@@ -27,6 +29,7 @@ class Game:
         self.random = Random(random_seed)
         self.armies = []
         self.create_armies()
+        self.logger = TxtLogger()
 
     def create_armies(self):
         """Fills armies[] with Army instance
@@ -34,9 +37,9 @@ class Game:
         Returns:
             None
         """
-        for _ in range(settings.COUNT_OF_ARMIES):
+        for i in range(settings.COUNT_OF_ARMIES):
             strategy = self.random.choice(Game.strategies)
-            self.armies.append(Army(strategy, self.random))
+            self.armies.append(Army(f"Army {i + 1}", strategy, self.random))
 
     def filter_alive_armies(self):
         """Check army for the presence of squads in it
@@ -58,10 +61,12 @@ class Game:
             for army in self.armies:
                 if army.health <= 0:
                     break
-                enemy_armies = [enemy_army for enemy_army in self.armies if
-                                enemy_army is not army]
+                enemy_armies = [enemy_army for enemy_army in self.armies if enemy_army is not army]
                 enemy_army = army.strategy.select_enemy(enemy_armies)
                 if army.attack_success_probability > enemy_army.attack_success_probability:
+                    self.logger.write(f"{army.name} attacks {enemy_army.name}")
                     army.attack(enemy_army)
                     self.filter_alive_armies()
-        print(self.armies)
+                    for army in self.armies:
+                        self.logger.write(f"{army.name} ---- {army.health} health")
+        self.logger.close()

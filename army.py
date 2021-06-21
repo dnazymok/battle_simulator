@@ -9,6 +9,7 @@ class Army:
     Army collects a group of squads
 
     Attributes:
+        name: Army name
         random: Random instance for repeatability
         strategy: Instance of Strategy class
         squads: List of squads
@@ -17,7 +18,8 @@ class Army:
         attack_success_probability: Average probability of self squads
 
     """
-    def __init__(self, strategy, random=None):
+    def __init__(self, name, strategy, random=None):
+        self.name = name
         self.random = random
         self.strategy = strategy
         self.squads = []

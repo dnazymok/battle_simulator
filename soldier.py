@@ -67,7 +67,7 @@ class Soldier(Unit):
         Returns:
             int
         """
-        return 5 + self.experience / 100
+        return 0.05 + self.experience / 100
 
     @property
     def attack_success_probability(self):
