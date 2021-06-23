@@ -11,7 +11,6 @@ class Soldier(Unit):
         experience: Value of Soldier experience
         damage: Value of Soldier damage
         attack_success_probability: Chance to attack enemy
-
     """
     def __init__(self, random=None):
         self.random = random
@@ -29,11 +28,7 @@ class Soldier(Unit):
 
     @health.setter
     def health(self, value):
-        """Set Soldier health
-
-        Returns:
-            None
-        """
+        """Set Soldier health"""
         self._health = value
 
     @property
@@ -53,9 +48,6 @@ class Soldier(Unit):
 
         Args:
             value: Number of increasing
-
-        Returns:
-            None
         """
         if self.experience < 50:
             self._experience = value
@@ -81,11 +73,7 @@ class Soldier(Unit):
             100) / 100
 
     def get_exp(self):
-        """Increases the experience of units
-
-        Returns:
-            None
-        """
+        """Increases the experience of units"""
         self.experience += 1
 
     def get_damage(self, damage):
@@ -93,9 +81,6 @@ class Soldier(Unit):
 
             Args:
                 damage: int
-
-            Returns:
-                None
         """
         if self.health > 0:
             self.health -= damage

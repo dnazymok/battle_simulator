@@ -35,11 +35,7 @@ class Vehicle(Unit):
 
     @health.setter
     def health(self, value):
-        """Set Vehicle health
-
-        Returns:
-            None
-        """
+        """Set Vehicle health"""
         self._health = value
 
     @property
@@ -66,11 +62,7 @@ class Vehicle(Unit):
             self.operators) / len(self.operators)
 
     def create_operators(self):
-        """Fills operators[] with Soldier instance
-
-            Returns:
-                 None
-        """
+        """Fills operators[] with Soldier instance"""
         for _ in range(self.random.randint(1, 3)):
             self.operators.append(Soldier(self.random))
 
@@ -79,9 +71,6 @@ class Vehicle(Unit):
 
             Args:
                 damage: int
-
-            Returns:
-                None
         """
         vehicle_damage = damage * 0.6
         operator_damage = damage * 0.1
@@ -92,10 +81,6 @@ class Vehicle(Unit):
                 self.operators.remove(operator)
 
     def get_exp(self):
-        """Increases the experience of operators
-
-        Returns:
-            None
-        """
+        """Increases the experience of operators"""
         for operator in self.operators:
             operator.get_exp()

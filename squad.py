@@ -17,7 +17,6 @@ class Squad:
         health: Sum health of self units
         damage: Sum damage of self units
         attack_success_probability: Average probability of self units
-
     """
     def __init__(self, strategy, random=None):
         self.random = random
@@ -55,11 +54,7 @@ class Squad:
             self.units)
 
     def create_units(self):
-        """Fills units[] with Soldier or Vehicle instance
-
-            Returns:
-                 None
-        """
+        """Fills units[] with Soldier or Vehicle instance"""
         for _ in range(settings.COUNT_OF_UNITS_PER_SQUAD):
             self.units.append(self.random.choice(
                 [Soldier(self.random), Vehicle(self.random)]))
@@ -72,9 +67,6 @@ class Squad:
 
             Args:
                 damage: int
-
-            Returns:
-                None
         """
         for unit in self.units:
             unit.get_damage(damage)
@@ -82,10 +74,6 @@ class Squad:
                 self.units.remove(unit)
 
     def get_exp(self):
-        """Increases the experience of units in the squad
-
-        Returns:
-            None
-        """
+        """Increases the experience of units in the squad"""
         for unit in self.units:
             unit.get_exp()

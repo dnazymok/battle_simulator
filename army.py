@@ -16,7 +16,6 @@ class Army:
         health: Sum health of self squads
         damage: Sum damage of self squads
         attack_success_probability: Average probability of self squads
-
     """
     def __init__(self, name, strategy, random=None):
         self.name = name
@@ -55,11 +54,7 @@ class Army:
             self.squads)
 
     def create_squads(self):
-        """Fills squads[] with Squad instance
-
-        Returns:
-             None
-        """
+        """Fills squads[] with Squad instance"""
         for _ in range(settings.COUNT_OF_SQUADS_PER_ARMY):
             self.squads.append(Squad(self.strategy, self.random))
 
@@ -68,9 +63,6 @@ class Army:
 
         Args:
             enemy_army: Army instance
-
-        Returns:
-            None
         """
         enemy_army.get_damage(self.damage)
         for squad in self.squads:
@@ -81,9 +73,6 @@ class Army:
 
         Args:
             damage: int
-
-        Returns:
-            None
         """
         for squad in self.squads:
             squad.get_damage(damage)

@@ -20,7 +20,4 @@ class Unit(ABC):
 
         Args:
             damage:
-
-        Returns:
-            None
         """

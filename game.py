@@ -34,11 +34,7 @@ class Game:
         self.logger = TxtLogger()
 
     def create_armies(self):
-        """Fills armies[] with Army instance
-
-        Returns:
-            None
-        """
+        """Fills armies[] with Army instance"""
         for i in range(settings.COUNT_OF_ARMIES):
             strategy = self.random.choice(Game.strategies)
             self.armies.append(Army(f"Army {i + 1}", strategy, self.random))
@@ -47,18 +43,11 @@ class Game:
         """Check army for the presence of squads in it
 
         If self.armies has no squads, it is removed from the self.armies
-
-        Returns:
-            None
         """
         self.armies = [army for army in self.armies if army.squads]
 
     def run(self):
-        """Main loop
-
-        Returns:
-            None
-        """
+        """Main loop"""
         while len(self.armies) > 1:
             for army in self.armies:
                 if army.health <= 0:
