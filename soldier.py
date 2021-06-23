@@ -15,8 +15,8 @@ class Soldier(Unit):
     """
     def __init__(self, random=None):
         self.random = random
-        self.__health = 100
-        self.__experience = 0
+        self._health = 100
+        self._experience = 0
 
     @property
     def health(self):
@@ -25,7 +25,7 @@ class Soldier(Unit):
         Returns:
             health: int
         """
-        return self.__health
+        return self._health
 
     @health.setter
     def health(self, value):
@@ -34,7 +34,7 @@ class Soldier(Unit):
         Returns:
             None
         """
-        self.__health = value
+        self._health = value
 
     @property
     def experience(self):
@@ -45,7 +45,7 @@ class Soldier(Unit):
         Returns:
             experience: int
         """
-        return self.__experience
+        return self._experience
 
     @experience.setter
     def experience(self, value):
@@ -58,7 +58,7 @@ class Soldier(Unit):
             None
         """
         if self.experience < 50:
-            self.__experience = value
+            self._experience = value
 
     @property
     def damage(self):

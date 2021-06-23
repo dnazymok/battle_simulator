@@ -17,7 +17,7 @@ class Vehicle(Unit):
 
     def __init__(self, random=None):
         self.random = random
-        self.__health = 100
+        self._health = 100
         self.operators = []
         self.create_operators()
 
@@ -31,7 +31,7 @@ class Vehicle(Unit):
         if not self.operators:
             return 0
         return sum(operator.health for operator in self.operators) / len(
-            self.operators) + self.__health
+            self.operators) + self._health
 
     @health.setter
     def health(self, value):
@@ -40,7 +40,7 @@ class Vehicle(Unit):
         Returns:
             None
         """
-        self.__health = value
+        self._health = value
 
     @property
     def damage(self):
@@ -85,7 +85,7 @@ class Vehicle(Unit):
         """
         vehicle_damage = damage * 0.6
         operator_damage = damage * 0.1
-        self.__health -= vehicle_damage
+        self._health -= vehicle_damage
         for operator in self.operators:
             operator.get_damage(operator_damage)
             if operator.health < 0:
